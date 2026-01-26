@@ -346,6 +346,32 @@ AUTHOR: BDM JP
         </div>
     </footer>
     <script src="main.js"></script>
+
+    <script>
+  const highTechModal = document.getElementById('highTechModal');
+
+  function openHighTechModal() {
+    highTechModal.classList.add('show');
+  }
+
+  function closeHighTechModal() {
+    highTechModal.classList.remove('show');
+    localStorage.setItem('highTechModalSeen', 'true');
+  }
+
+  window.addEventListener('load', () => {
+    // Only show again if not seen before
+    if (!localStorage.getItem('highTechModalSeen')) {
+      setTimeout(openHighTechModal, 1800); // slow open
+    }
+  });
+
+  // Clicking backdrop closes
+  highTechModal.addEventListener('click', (e) => {
+    if (e.target === highTechModal) closeHighTechModal();
+  });
+</script>
+
 </body>
 
 </html>
